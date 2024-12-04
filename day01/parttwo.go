@@ -1,4 +1,4 @@
-package parttwo
+package day01
 
 import (
 	"strconv"
@@ -7,7 +7,7 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func Solve() int {
+func PartTwo() int {
 	f := util.NewScannerForInput(1, false)
 	defer f.Close()
 

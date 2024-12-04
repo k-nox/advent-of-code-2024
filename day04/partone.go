@@ -1,4 +1,4 @@
-package partone
+package day04
 
 import (
 	"strings"
@@ -13,7 +13,7 @@ type Point struct {
 
 type Grid map[Point]string
 
-func Solve() int {
+func PartOne() int {
 	f := util.NewScannerForInput(4, false)
 	defer f.Close()
 

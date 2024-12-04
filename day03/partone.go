@@ -1,4 +1,4 @@
-package partone
+package day03
 
 import (
 	"os"
@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-func Solve() int {
+func PartOne() int {
 	re := regexp.MustCompile(`mul\((\d{1,3},\d{1,3})\)`)
 
-	f, err := os.ReadFile("day03/input/input.txt")
+	f, err := os.ReadFile("input/day03/input.txt")
 	if err != nil {
 		panic(err)
 	}

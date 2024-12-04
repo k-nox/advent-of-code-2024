@@ -1,23 +1,22 @@
-package parttwo
+package day04
 
 import (
 	"strings"
 
-	"github.com/k-nox/advent-of-code-2024/day04/partone"
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func Solve() int {
+func PartTwo() int {
 	f := util.NewScannerForInput(4, false)
 	defer f.Close()
 
-	grid := partone.Grid{}
+	grid := Grid{}
 	y := 0
-	aLocs := []partone.Point{}
+	aLocs := []Point{}
 	for f.Scan() {
 		curr := strings.TrimSpace(f.Text())
 		for x := 0; x < len(curr); x++ {
-			p := partone.Point{
+			p := Point{
 				X: x,
 				Y: y,
 			}
@@ -32,19 +31,19 @@ func Solve() int {
 
 	count := 0
 	for _, aLoc := range aLocs {
-		topLeft, ok := checkAndGetLetter(grid, partone.UpLeft(aLoc))
+		topLeft, ok := checkAndGetLetter(grid, UpLeft(aLoc))
 		if !ok {
 			continue
 		}
-		topRight, ok := checkAndGetLetter(grid, partone.UpRight(aLoc))
+		topRight, ok := checkAndGetLetter(grid, UpRight(aLoc))
 		if !ok {
 			continue
 		}
-		bottomRight, ok := checkAndGetLetter(grid, partone.DownRight(aLoc))
+		bottomRight, ok := checkAndGetLetter(grid, DownRight(aLoc))
 		if !ok {
 			continue
 		}
-		bottomLeft, ok := checkAndGetLetter(grid, partone.DownLeft(aLoc))
+		bottomLeft, ok := checkAndGetLetter(grid, DownLeft(aLoc))
 		if !ok {
 			continue
 		}
@@ -79,7 +78,7 @@ func Solve() int {
 	return count
 }
 
-func checkAndGetLetter(g partone.Grid, p partone.Point) (string, bool) {
+func checkAndGetLetter(g Grid, p Point) (string, bool) {
 	l, ok := g[p]
 	if !ok || (l != "M" && l != "S") {
 		return "", false

@@ -28,7 +28,7 @@ func NewScannerForInput(day int, readSample bool) *FileScanner {
 		file = "sample"
 	}
 
-	return NewFileScanner(fmt.Sprintf("day%02d/input/%s.txt", day, file))
+	return NewFileScanner(fmt.Sprintf("input/day%02d/%s.txt", day, file))
 }
 
 func (f *FileScanner) Close() {

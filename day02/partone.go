@@ -1,4 +1,4 @@
-package partone
+package day02
 
 import (
 	"math"
@@ -8,7 +8,7 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func Solve() int {
+func PartOne() int {
 	f := util.NewScannerForInput(2, false)
 	defer f.Close()
 	safe := 0

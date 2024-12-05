@@ -1,3 +1,6 @@
+// Code generated; DO NOT EDIT.
+// This file was generated at
+// 2024-12-05 15:02:05.011051 -0800 PST m=+0.003849001
 package cli
 
 import (
@@ -20,9 +23,4 @@ var registry = map[int]day{
 	3: {day03.PartOne, day03.PartTwo},
 	4: {day04.PartOne, day04.PartTwo},
 	5: {day05.PartOne, day05.PartTwo},
-}
-
-func GetDay(dayNum int) (day, bool) {
-	d, ok := registry[dayNum]
-	return d, ok
 }

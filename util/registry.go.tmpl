@@ -20,8 +20,3 @@ var registry = map[int]day{
 	{{ . }}: {day{{ printf "%02d" .}}.PartOne, day{{printf "%02d" .}}.PartTwo},
 {{- end }}
 }
-
-func GetDay(dayNum int) (day, bool) {
-	d, ok := registry[dayNum]
-	return d, ok
-}

@@ -7,8 +7,8 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func PartOne() int {
-	f := util.NewScannerForInput(5, false)
+func PartOne(useSample bool) int {
+	f := util.NewScannerForInput(5, useSample)
 	defer f.Close()
 
 	// X|Y

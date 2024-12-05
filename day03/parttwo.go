@@ -1,16 +1,22 @@
 package day03
 
 import (
+	"fmt"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func PartTwo() int {
+func PartTwo(useSample bool) int {
 	re := regexp.MustCompile(`mul\((\d{1,3},\d{1,3})\)|(do\(\))|(don't\(\))`)
 
-	f, err := os.ReadFile("input/day03/input.txt")
+	file := "input"
+	if useSample {
+		file = "sample2"
+	}
+
+	f, err := os.ReadFile(fmt.Sprintf("input/day03/%s.txt", file))
 	if err != nil {
 		panic(err)
 	}

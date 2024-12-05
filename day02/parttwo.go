@@ -9,8 +9,8 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func PartTwo() int {
-	f := util.NewScannerForInput(2, false)
+func PartTwo(useSample bool) int {
+	f := util.NewScannerForInput(2, useSample)
 	defer f.Close()
 	safe := 0
 	// threshold := 20

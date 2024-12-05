@@ -9,8 +9,8 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func PartOne() int {
-	f := util.NewScannerForInput(1, false)
+func PartOne(useSample bool) int {
+	f := util.NewScannerForInput(1, useSample)
 	defer f.Close()
 	var left []int
 	var right []int

@@ -8,8 +8,8 @@ import (
 	"github.com/k-nox/advent-of-code-2024/util"
 )
 
-func PartTwo() int {
-	f := util.NewScannerForInput(5, false)
+func PartTwo(useSample bool) int {
+	f := util.NewScannerForInput(5, useSample)
 	defer f.Close()
 
 	rules := map[string][]string{}

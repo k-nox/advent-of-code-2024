@@ -13,8 +13,8 @@ type Point struct {
 
 type Grid map[Point]string
 
-func PartOne() int {
-	f := util.NewScannerForInput(4, false)
+func PartOne(useSample bool) int {
+	f := util.NewScannerForInput(4, useSample)
 	defer f.Close()
 
 	xLocs := []Point{}

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/advent-of-code-2024/util"
+	"github.com/k-nox/aoc/util"
 )
 
 func PartOne(useSample bool) int {

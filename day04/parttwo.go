@@ -3,7 +3,7 @@ package day04
 import (
 	"strings"
 
-	"github.com/k-nox/advent-of-code-2024/util"
+	"github.com/k-nox/aoc/util"
 )
 
 func PartTwo(useSample bool) int {

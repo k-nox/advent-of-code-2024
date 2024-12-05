@@ -48,6 +48,13 @@ func App() *cli.App {
 			Action:  gen,
 			Flags: []cli.Flag{
 				dayFlag,
+				&cli.BoolFlag{
+					Name:        "force",
+					Aliases:     []string{"f"},
+					Usage:       "Force generation - may overwrite existing files",
+					DefaultText: "false",
+					Value:       false,
+				},
 			},
 		},
 	}
@@ -57,6 +64,13 @@ func App() *cli.App {
 
 func gen(c *cli.Context) error {
 	day := c.Int("day")
+	force := c.Bool("force")
+	if _, ok := registry[day]; ok {
+		if !force {
+			return cli.Exit(fmt.Sprintf("day %02d already exists; use --force if you really want to overwrite existing files", day), 1)
+		}
+		fmt.Printf("force applied - may overwrite existing files")
+	}
 	fmt.Printf("generating files for day %02d\n", day)
 	err := util.Generate(day)
 	if err != nil {

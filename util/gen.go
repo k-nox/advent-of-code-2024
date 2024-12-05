@@ -7,12 +7,8 @@ import (
 	"os"
 	"strings"
 	"text/template"
+	"time"
 )
-
-type Data struct {
-	Day  int
-	Part string
-}
 
 func Generate(d int) error {
 	pkgName := fmt.Sprintf("day%02d", d)
@@ -24,6 +20,11 @@ func Generate(d int) error {
 	err = genPkg(d, pkgName)
 	if err != nil {
 		return fmt.Errorf("error generating package: %w", err)
+	}
+
+	err = genRegistry(d)
+	if err != nil {
+		return fmt.Errorf("error generating registry: %w", err)
 	}
 
 	return nil
@@ -84,7 +85,7 @@ func genPkg(d int, pkgName string) error {
 }
 
 func genPartFile(d int, pkgName string, part string) error {
-	tmplFile := "part.tmpl"
+	tmplFile := "part.go.tmpl"
 	tmpl, err := template.New(tmplFile).ParseFiles(fmt.Sprintf("util/%s", tmplFile))
 	if err != nil {
 		return fmt.Errorf("error parsing template: %w", err)
@@ -94,7 +95,10 @@ func genPartFile(d int, pkgName string, part string) error {
 		return fmt.Errorf("error creating part%s.go: %w", strings.ToLower(part), err)
 	}
 	defer f.Close()
-	err = tmpl.Execute(f, Data{
+	err = tmpl.Execute(f, struct {
+		Day  int
+		Part string
+	}{
 		Day:  d,
 		Part: part,
 	})
@@ -102,5 +106,40 @@ func genPartFile(d int, pkgName string, part string) error {
 	if err != nil {
 		return fmt.Errorf("error execturing template: %w", err)
 	}
+	return nil
+}
+
+func genRegistry(d int) error {
+	tmplFile := "registry.go.tmpl"
+	tmpl, err := template.New(tmplFile).ParseFiles(fmt.Sprintf("util/%s", tmplFile))
+	if err != nil {
+		return fmt.Errorf("error parsing template: %w", err)
+	}
+
+	f, err := os.Create("cli/registry.go")
+	if err != nil {
+		return fmt.Errorf("error creating registry.go: %w", err)
+	}
+	defer f.Close()
+
+	days := []int{}
+
+	for i := 1; i <= d; i++ {
+		days = append(days, i)
+	}
+
+	// err = tmpl.Execute(f, struct{Days: days})
+	err = tmpl.Execute(f, struct {
+		Timestamp time.Time
+		Days      []int
+	}{
+		Timestamp: time.Now(),
+		Days:      days,
+	})
+
+	if err != nil {
+		return fmt.Errorf("error execturing template: %w", err)
+	}
+
 	return nil
 }

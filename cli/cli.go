@@ -11,6 +11,7 @@ import (
 func App() *cli.App {
 
 	app := cli.NewApp()
+	app.Name = "aoc"
 	app.Usage = "A CLI to make a life a little easier when solving Advent of Code puzzles"
 	app.DefaultCommand = "run"
 	app.Suggest = true

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/k-nox/advent-of-code-2024/util"
+	"github.com/k-nox/aoc/gen"
 	"github.com/urfave/cli/v2"
 )
 
@@ -46,7 +46,7 @@ func App() *cli.App {
 			Name:    "gen",
 			Aliases: []string{"g"},
 			Usage:   "Generate files for specified day",
-			Action:  gen,
+			Action:  generate,
 			Flags: []cli.Flag{
 				dayFlag,
 				&cli.BoolFlag{
@@ -63,7 +63,7 @@ func App() *cli.App {
 	return app
 }
 
-func gen(c *cli.Context) error {
+func generate(c *cli.Context) error {
 	day := c.Int("day")
 	force := c.Bool("force")
 	if _, ok := registry[day]; ok {
@@ -73,7 +73,7 @@ func gen(c *cli.Context) error {
 		fmt.Printf("force applied - may overwrite existing files")
 	}
 	fmt.Printf("generating files for day %02d\n", day)
-	err := util.Generate(day)
+	err := gen.Generate(day, "github.com/k-nox/advent-of-code-2024")
 	if err != nil {
 		return cli.Exit(err, 1)
 	}

@@ -2,6 +2,8 @@ github.com/cpuguy83/go-md2man/v2 v2.0.5 h1:ZtcqGrnekaHpVLArFSe4HK5DoKx1T0rq2DwVB
 github.com/cpuguy83/go-md2man/v2 v2.0.5/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/k-nox/aoc v0.0.0-20241205232457-66520e6792b9 h1:BZsj0nwAn1Ii88lcXIv/WDSlzmhLucRq92Il3Kfd6NU=
 github.com/k-nox/aoc v0.0.0-20241205232457-66520e6792b9/go.mod h1:L/9HjMDuVEHK6VeZxcnnK0KXH2qhrmlkD6oLp4HlFu4=
+github.com/k-nox/aoc v0.0.0-20241205233953-699a6eb169df h1:mXn6eK7esa7dC7rVLMNpUavY3SsDELtc56X6BItI5YU=
+github.com/k-nox/aoc v0.0.0-20241205233953-699a6eb169df/go.mod h1:2PwXHAXIir7svBmeiToUiDcLSxeRGtaiMotSoMJgcis=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/urfave/cli/v2 v2.27.5 h1:WoHEJLdsXr6dDWoJgMq/CboDmyY/8HMMH1fTECbih+w=

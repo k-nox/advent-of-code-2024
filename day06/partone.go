@@ -6,36 +6,18 @@ import (
 	"github.com/k-nox/aoc/util"
 )
 
+var dirs = []func(p util.Point) util.Point{
+	util.Up,
+	util.Right,
+	util.Down,
+	util.Left,
+}
+
 func PartOne(useSample bool) int {
 	f := util.NewScannerForInput(6, useSample)
 	defer f.Close()
 
-	grid := util.Grid{}
-	y := 0
-	guard := util.Point{}
-	for f.Scan() {
-		curr := strings.TrimSpace(f.Text())
-		for x := 0; x < len(curr); x++ {
-			p := util.Point{
-				X: x,
-				Y: y,
-			}
-			c := string(curr[x])
-			if c == "^" {
-				c = "."
-				guard = p
-			}
-			grid[p] = c
-		}
-		y++
-	}
-
-	dirs := []func(p util.Point) util.Point{
-		util.Up,
-		util.Right,
-		util.Down,
-		util.Left,
-	}
+	grid, guard := parse(f)
 
 	currDir := 0 // index for Up
 	sum := 1
@@ -66,4 +48,27 @@ func PartOne(useSample bool) int {
 	}
 
 	return sum
+}
+
+func parse(f *util.FileScanner) (util.Grid, util.Point) {
+	grid := util.Grid{}
+	y := 0
+	guard := util.Point{}
+	for f.Scan() {
+		curr := strings.TrimSpace(f.Text())
+		for x := 0; x < len(curr); x++ {
+			p := util.Point{
+				X: x,
+				Y: y,
+			}
+			c := string(curr[x])
+			if c == "^" {
+				c = "."
+				guard = p
+			}
+			grid[p] = c
+		}
+		y++
+	}
+	return grid, guard
 }

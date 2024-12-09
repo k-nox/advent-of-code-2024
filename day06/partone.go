@@ -6,13 +6,6 @@ import (
 	"github.com/k-nox/aoc/util"
 )
 
-var dirs = []func(p util.Point) util.Point{
-	util.Up,
-	util.Right,
-	util.Down,
-	util.Left,
-}
-
 func PartOne(useSample bool) int {
 	f := util.NewScannerForInput(6, useSample)
 	defer f.Close()

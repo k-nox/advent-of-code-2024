@@ -77,14 +77,13 @@ func checksum(disk []*int) int {
 	return sum
 }
 
-func printDisk(disk []*int) {
-	fmt.Printf("[ ")
-	for _, d := range disk {
-		if d == nil {
-			fmt.Printf("%v ", d)
-		} else {
-			fmt.Printf("%d ", *d)
-		}
-	}
-	fmt.Printf(" ]\n")
-}
+// func printDisk(disk []*int) {
+// 	for _, d := range disk {
+// 		if d == nil {
+// 			fmt.Print(".")
+// 		} else {
+// 			fmt.Print(strconv.Itoa(*d))
+// 		}
+// 	}
+// 	fmt.Print("\n")
+// }

@@ -13,7 +13,7 @@ func PartOne(useSample bool) int {
 	g, trailheads := parse(f)
 	sum := 0
 	for _, trailhead := range trailheads {
-		sum += score(g, trailhead, map[util.Point]bool{})
+		sum += score(g, trailhead, map[util.Point]bool{}, true)
 	}
 	return sum
 }
@@ -43,11 +43,11 @@ func parse(f *util.FileScanner) (grid, []util.Point) {
 	return g, trailheads
 }
 
-func score(g grid, trailhead util.Point, foundPeaks map[util.Point]bool) int {
+func score(g grid, trailhead util.Point, foundPeaks map[util.Point]bool, mustBeUnique bool) int {
 	curr := g[trailhead]
 
 	if curr == 9 {
-		if _, seenBefore := foundPeaks[trailhead]; seenBefore {
+		if _, seenBefore := foundPeaks[trailhead]; mustBeUnique && seenBefore {
 			return 0
 		}
 		foundPeaks[trailhead] = true
@@ -66,7 +66,7 @@ func score(g grid, trailhead util.Point, foundPeaks map[util.Point]bool) int {
 	for _, direction := range directions {
 		nextPoint := direction(trailhead)
 		if val, ok := g[nextPoint]; ok && val == curr+1 {
-			sum += score(g, nextPoint, foundPeaks)
+			sum += score(g, nextPoint, foundPeaks, mustBeUnique)
 		}
 	}
 

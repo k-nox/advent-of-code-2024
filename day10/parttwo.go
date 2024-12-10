@@ -8,9 +8,11 @@ func PartTwo(useSample bool) int {
 	f := util.NewScannerForInput(10, useSample)
 	defer f.Close()
 
-	for f.Scan() {
-
+	g, trailheads := parse(f)
+	sum := 0
+	for _, trailhead := range trailheads {
+		sum += score(g, trailhead, map[util.Point]bool{}, false)
 	}
-	
-	return 0
+
+	return sum
 }

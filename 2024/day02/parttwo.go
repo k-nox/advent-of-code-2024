@@ -10,7 +10,7 @@ import (
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2, useSample)
+	f := util.NewScannerForInput(2024, 2, useSample)
 	defer f.Close()
 	safe := 0
 	// threshold := 20

@@ -7,7 +7,7 @@ import (
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(6, useSample)
+	f := util.NewScannerForInput(2024, 6, useSample)
 	defer f.Close()
 
 	grid, guard := parse(f)

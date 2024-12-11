@@ -7,7 +7,7 @@ import (
 type grid map[util.Point]int
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(10, useSample)
+	f := util.NewScannerForInput(2024, 10, useSample)
 	defer f.Close()
 
 	g, trailheads := parse(f)

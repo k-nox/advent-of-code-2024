@@ -5,7 +5,7 @@ import (
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(8, useSample)
+	f := util.NewScannerForInput(2024, 8, useSample)
 	defer f.Close()
 
 	grid, antennas := parse(f)

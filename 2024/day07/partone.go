@@ -8,7 +8,7 @@ import (
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(7, useSample)
+	f := util.NewScannerForInput(2024, 7, useSample)
 	defer f.Close()
 
 	sum := 0

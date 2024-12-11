@@ -19,7 +19,7 @@ func PartTwo(useSample bool) int {
 		file = "sample"
 	}
 
-	f, err := os.ReadFile(fmt.Sprintf("input/day09/%s.txt", file))
+	f, err := os.ReadFile(fmt.Sprintf("input/2024/day09/%s.txt", file))
 	if err != nil {
 		panic(err)
 	}

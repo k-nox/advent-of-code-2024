@@ -8,7 +8,7 @@ import (
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(5, useSample)
+	f := util.NewScannerForInput(2024, 5, useSample)
 	defer f.Close()
 
 	// X|Y

@@ -9,7 +9,7 @@ import (
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(5, useSample)
+	f := util.NewScannerForInput(2024, 5, useSample)
 	defer f.Close()
 
 	rules := map[string][]string{}

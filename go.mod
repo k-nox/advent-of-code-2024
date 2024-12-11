@@ -1,4 +1,4 @@
-module github.com/k-nox/advent-of-code-2024
+module github.com/k-nox/advent-of-code-solutions
 
 go 1.23.2
 

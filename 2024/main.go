@@ -1,22 +1,23 @@
 // Code generated; DO NOT EDIT.
 // This file was generated at
-// 2024-12-10 06:13:49.99639 -0800 PST m=+0.004552584
+// 2024-12-11 07:38:18.595851 -0800 PST m=+0.003075418
 package main
 
 import (
 	"log"
 	"os"
 	"github.com/k-nox/aoc/cli"
-	"github.com/k-nox/advent-of-code-2024/2024/day01"
-	"github.com/k-nox/advent-of-code-2024/2024/day02"
-	"github.com/k-nox/advent-of-code-2024/2024/day03"
-	"github.com/k-nox/advent-of-code-2024/2024/day04"
-	"github.com/k-nox/advent-of-code-2024/2024/day05"
-	"github.com/k-nox/advent-of-code-2024/2024/day06"
-	"github.com/k-nox/advent-of-code-2024/2024/day07"
-	"github.com/k-nox/advent-of-code-2024/2024/day08"
-	"github.com/k-nox/advent-of-code-2024/2024/day09"
-	"github.com/k-nox/advent-of-code-2024/2024/day10"
+	"github.com/k-nox/advent-of-code-solutions/2024/day01"
+	"github.com/k-nox/advent-of-code-solutions/2024/day02"
+	"github.com/k-nox/advent-of-code-solutions/2024/day03"
+	"github.com/k-nox/advent-of-code-solutions/2024/day04"
+	"github.com/k-nox/advent-of-code-solutions/2024/day05"
+	"github.com/k-nox/advent-of-code-solutions/2024/day06"
+	"github.com/k-nox/advent-of-code-solutions/2024/day07"
+	"github.com/k-nox/advent-of-code-solutions/2024/day08"
+	"github.com/k-nox/advent-of-code-solutions/2024/day09"
+	"github.com/k-nox/advent-of-code-solutions/2024/day10"
+	"github.com/k-nox/advent-of-code-solutions/2024/day11"
 )
 
 var registry = cli.Registry{
@@ -30,10 +31,11 @@ var registry = cli.Registry{
 	"day08": {PartOne: day08.PartOne, PartTwo: day08.PartTwo},
 	"day09": {PartOne: day09.PartOne, PartTwo: day09.PartTwo},
 	"day10": {PartOne: day10.PartOne, PartTwo: day10.PartTwo},
+	"day11": {PartOne: day11.PartOne, PartTwo: day11.PartTwo},
 }	
 
 func main() {
-	app := cli.App(registry, "github.com/k-nox/advent-of-code-2024")
+	app := cli.App(registry, "github.com/k-nox/advent-of-code-solutions")
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}

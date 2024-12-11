@@ -35,7 +35,7 @@ var registry = cli.Registry{
 }	
 
 func main() {
-	app := cli.App(registry, "github.com/k-nox/advent-of-code-solutions")
+	app := cli.App(registry)
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}

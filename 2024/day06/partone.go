@@ -2,11 +2,13 @@ package day06
 
 import (
 	"bufio"
+	"image"
 	"strings"
 
 	"github.com/k-nox/advent-of-code-solutions/helper"
-	"github.com/k-nox/aoc/util"
 )
+
+type grid map[image.Point]string
 
 func PartOne(useSample bool) int {
 	f := helper.OpenInput(2024, 6, useSample)
@@ -17,7 +19,7 @@ func PartOne(useSample bool) int {
 
 	currDir := 0 // index for Up
 	sum := 1
-	visited := map[util.Point]bool{
+	visited := map[image.Point]bool{
 		guard: true,
 	}
 
@@ -46,14 +48,14 @@ func PartOne(useSample bool) int {
 	return sum
 }
 
-func parseInp(scanner *bufio.Scanner) (util.Grid, util.Point) {
-	grid := util.Grid{}
+func parseInp(scanner *bufio.Scanner) (grid, image.Point) {
+	grid := grid{}
 	y := 0
-	guard := util.Point{}
+	guard := image.Point{}
 	for scanner.Scan() {
 		curr := strings.TrimSpace(scanner.Text())
 		for x := 0; x < len(curr); x++ {
-			p := util.Point{
+			p := image.Point{
 				X: x,
 				Y: y,
 			}

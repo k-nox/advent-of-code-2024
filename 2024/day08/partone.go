@@ -2,18 +2,20 @@ package day08
 
 import (
 	"bufio"
+	"image"
 	"strings"
 
 	"github.com/k-nox/advent-of-code-solutions/helper"
-	"github.com/k-nox/aoc/util"
 )
+
+type grid map[image.Point]string
 
 func PartOne(useSample bool) int {
 	f := helper.OpenInput(2024, 8, useSample)
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
 
-	antinodes := map[util.Point]bool{}
+	antinodes := map[image.Point]bool{}
 	grid, antennas := parseInp(scanner)
 	for _, locations := range antennas {
 		antinodesForLoc := findAntinodes(grid, locations)
@@ -27,15 +29,15 @@ func PartOne(useSample bool) int {
 	return len(antinodes)
 }
 
-func parseInp(scanner *bufio.Scanner) (util.Grid, map[string][]util.Point) {
-	g := util.Grid{}
-	antennas := map[string][]util.Point{}
+func parseInp(scanner *bufio.Scanner) (grid, map[string][]image.Point) {
+	g := grid{}
+	antennas := map[string][]image.Point{}
 
 	y := 0
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
 		for x := range line {
-			pt := util.Point{
+			pt := image.Point{
 				X: x,
 				Y: y,
 			}
@@ -50,13 +52,13 @@ func parseInp(scanner *bufio.Scanner) (util.Grid, map[string][]util.Point) {
 	return g, antennas
 }
 
-func findAntinodesForPair(a util.Point, b util.Point) (util.Point, util.Point) {
+func findAntinodesForPair(a image.Point, b image.Point) (image.Point, image.Point) {
 	distance := a.Sub(b)
 	return a.Add(distance), b.Sub(distance)
 }
 
-func findAntinodes(g util.Grid, locations []util.Point) []util.Point {
-	antinodes := []util.Point{}
+func findAntinodes(g grid, locations []image.Point) []image.Point {
+	antinodes := []image.Point{}
 	for i := 0; i < len(locations)-1; i++ {
 		for j := 1; j < len(locations); j++ {
 			if i == j {

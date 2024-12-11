@@ -2,9 +2,9 @@ package day10
 
 import (
 	"bufio"
+	"image"
 
 	"github.com/k-nox/advent-of-code-solutions/helper"
-	"github.com/k-nox/aoc/util"
 )
 
 func PartTwo(useSample bool) int {
@@ -15,7 +15,7 @@ func PartTwo(useSample bool) int {
 	g, trailheads := parseInp(scanner)
 	sum := 0
 	for _, trailhead := range trailheads {
-		sum += score(g, trailhead, map[util.Point]bool{}, false)
+		sum += score(g, trailhead, map[image.Point]bool{}, false)
 	}
 
 	return sum

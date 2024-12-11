@@ -2,9 +2,9 @@ package day08
 
 import (
 	"bufio"
+	"image"
 
 	"github.com/k-nox/advent-of-code-solutions/helper"
-	"github.com/k-nox/aoc/util"
 )
 
 func PartTwo(useSample bool) int {
@@ -13,7 +13,7 @@ func PartTwo(useSample bool) int {
 	scanner := bufio.NewScanner(f)
 
 	grid, antennas := parseInp(scanner)
-	uniqueAntinodes := map[util.Point]bool{}
+	uniqueAntinodes := map[image.Point]bool{}
 
 	for _, locations := range antennas {
 		for i := 0; i < len(locations)-1; i++ {
@@ -34,8 +34,8 @@ func PartTwo(useSample bool) int {
 	return len(uniqueAntinodes)
 }
 
-func findAllAntinodesForPair(g util.Grid, a util.Point, b util.Point) []util.Point {
-	antinodes := []util.Point{a, b}
+func findAllAntinodesForPair(g grid, a image.Point, b image.Point) []image.Point {
+	antinodes := []image.Point{a, b}
 	distance := a.Sub(b)
 	antinodeA := a.Add(distance)
 	_, aOk := g[antinodeA]

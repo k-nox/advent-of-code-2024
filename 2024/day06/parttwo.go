@@ -2,10 +2,10 @@ package day06
 
 import (
 	"bufio"
+	"image"
 	"slices"
 
 	"github.com/k-nox/advent-of-code-solutions/helper"
-	"github.com/k-nox/aoc/util"
 )
 
 type direction int
@@ -21,11 +21,11 @@ func (d direction) next() direction {
 	return (d + 1) % 4
 }
 
-var dirs = []func(p util.Point) util.Point{
-	util.Up,
-	util.Right,
-	util.Down,
-	util.Left,
+var dirs = []func(p image.Point) image.Point{
+	helper.Up,
+	helper.Right,
+	helper.Down,
+	helper.Left,
 }
 
 func PartTwo(useSample bool) int {
@@ -47,8 +47,8 @@ func PartTwo(useSample bool) int {
 	return loops
 }
 
-func isLoop(g util.Grid, d direction, guard util.Point) bool {
-	freq := map[util.Point]int{}
+func isLoop(g grid, d direction, guard image.Point) bool {
+	freq := map[image.Point]int{}
 
 	at := guard
 	for {
@@ -66,8 +66,8 @@ func isLoop(g util.Grid, d direction, guard util.Point) bool {
 	return false
 }
 
-func visitedCells(g util.Grid, d direction, guard util.Point) []util.Point {
-	var visited []util.Point
+func visitedCells(g grid, d direction, guard image.Point) []image.Point {
+	var visited []image.Point
 	at := guard
 	for {
 		nextPt, dir := nextPoint(g, d, at, 0)
@@ -83,7 +83,7 @@ func visitedCells(g util.Grid, d direction, guard util.Point) []util.Point {
 	return visited
 }
 
-func nextPoint(g util.Grid, d direction, guard util.Point, rotatedN int) (util.Point, direction) {
+func nextPoint(g grid, d direction, guard image.Point, rotatedN int) (image.Point, direction) {
 	if rotatedN == 4 {
 		return guard, d
 	}

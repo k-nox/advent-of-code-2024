@@ -3,7 +3,7 @@ package day09
 import (
 	"container/list"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
 type block struct {
@@ -19,7 +19,7 @@ func PartTwo(useSample bool) int {
 		file = "sample"
 	}
 
-	f := parse.ReadFile(2024, 9, file)
+	f := helper.ReadFile(2024, 9, file)
 
 	inp := string(f)
 	disk := parseExpanded(inp)

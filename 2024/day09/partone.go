@@ -1,6 +1,6 @@
 package day09
 
-import "github.com/k-nox/advent-of-code-solutions/parse"
+import "github.com/k-nox/advent-of-code-solutions/helper"
 
 func PartOne(useSample bool) int {
 	file := "input"
@@ -8,7 +8,7 @@ func PartOne(useSample bool) int {
 		file = "sample"
 	}
 
-	f := parse.ReadFile(2024, 9, file)
+	f := helper.ReadFile(2024, 9, file)
 
 	inp := string(f)
 	disk := parseInp(inp)

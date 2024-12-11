@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
 func PartTwo(useSample bool) int {
@@ -16,7 +16,7 @@ func PartTwo(useSample bool) int {
 		file = "sample2.txt"
 	}
 
-	f := parse.ReadFile(2024, 3, file)
+	f := helper.ReadFile(2024, 3, file)
 
 	matches := re.FindAllStringSubmatch(string(f), -1)
 

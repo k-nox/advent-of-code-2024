@@ -6,11 +6,11 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
 func PartTwo(useSample bool) int {
-	f := parse.OpenInput(2024, 11, useSample)
+	f := helper.OpenInput(2024, 11, useSample)
 	defer f.Close()
 
 	stones := parseInp2(f)

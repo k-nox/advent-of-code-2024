@@ -5,13 +5,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
 func PartOne(useSample bool) int {
 	re := regexp.MustCompile(`mul\((\d{1,3},\d{1,3})\)`)
 
-	f := parse.ReadInput(2024, 3, useSample)
+	f := helper.ReadInput(2024, 3, useSample)
 
 	matches := re.FindAllStringSubmatch(string(f), -1)
 

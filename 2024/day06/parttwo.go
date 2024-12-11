@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"slices"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 	"github.com/k-nox/aoc/util"
 )
 
@@ -29,7 +29,7 @@ var dirs = []func(p util.Point) util.Point{
 }
 
 func PartTwo(useSample bool) int {
-	f := parse.OpenInput(2024, 6, useSample)
+	f := helper.OpenInput(2024, 6, useSample)
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
 	grid, guardStart := parseInp(scanner)

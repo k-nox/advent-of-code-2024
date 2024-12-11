@@ -3,12 +3,12 @@ package day10
 import (
 	"bufio"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 	"github.com/k-nox/aoc/util"
 )
 
 func PartTwo(useSample bool) int {
-	f := parse.OpenInput(2024, 10, useSample)
+	f := helper.OpenInput(2024, 10, useSample)
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
 

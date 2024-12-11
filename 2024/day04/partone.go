@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"strings"
 
-	"github.com/k-nox/advent-of-code-solutions/parse"
+	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
 type Point struct {
@@ -15,7 +15,7 @@ type Point struct {
 type Grid map[Point]string
 
 func PartOne(useSample bool) int {
-	f := parse.OpenInput(2024, 4, useSample)
+	f := helper.OpenInput(2024, 4, useSample)
 	defer f.Close()
 
 	scanner := bufio.NewScanner(f)

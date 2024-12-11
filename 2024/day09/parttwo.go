@@ -2,8 +2,8 @@ package day09
 
 import (
 	"container/list"
-	"fmt"
-	"os"
+
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 type block struct {
@@ -19,10 +19,7 @@ func PartTwo(useSample bool) int {
 		file = "sample"
 	}
 
-	f, err := os.ReadFile(fmt.Sprintf("input/2024/day09/%s.txt", file))
-	if err != nil {
-		panic(err)
-	}
+	f := parse.ReadFile(2024, 9, file)
 
 	inp := string(f)
 	disk := parseExpanded(inp)

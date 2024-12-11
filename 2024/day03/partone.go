@@ -1,25 +1,17 @@
 package day03
 
 import (
-	"fmt"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartOne(useSample bool) int {
 	re := regexp.MustCompile(`mul\((\d{1,3},\d{1,3})\)`)
 
-	file := "input"
-	if useSample {
-		file = "sample"
-	}
-
-	f, err := os.ReadFile(fmt.Sprintf("input/2024/day03/%s.txt", file))
-	if err != nil {
-		panic(err)
-	}
+	f := parse.ReadInput(2024, 3, useSample)
 
 	matches := re.FindAllStringSubmatch(string(f), -1)
 

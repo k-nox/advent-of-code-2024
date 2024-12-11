@@ -1,19 +1,21 @@
 package day07
 
 import (
+	"bufio"
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 7, useSample)
+	f := parse.OpenInput(2024, 7, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
 	sum := 0
-	for f.Scan() {
-		target, vals := parse(f.Text())
+	for scanner.Scan() {
+		target, vals := parseInp(scanner.Text())
 		if isPossible(target, vals) {
 			sum += target
 		}
@@ -22,7 +24,7 @@ func PartOne(useSample bool) int {
 	return sum
 }
 
-func parse(line string) (int, []int) {
+func parseInp(line string) (int, []int) {
 	var (
 		target int
 		vals   []int

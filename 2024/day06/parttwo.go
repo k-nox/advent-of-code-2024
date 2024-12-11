@@ -1,8 +1,10 @@
 package day06
 
 import (
+	"bufio"
 	"slices"
 
+	"github.com/k-nox/advent-of-code-solutions/parse"
 	"github.com/k-nox/aoc/util"
 )
 
@@ -27,9 +29,10 @@ var dirs = []func(p util.Point) util.Point{
 }
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 6, useSample)
+	f := parse.OpenInput(2024, 6, useSample)
 	defer f.Close()
-	grid, guardStart := parse(f)
+	scanner := bufio.NewScanner(f)
+	grid, guardStart := parseInp(scanner)
 	visited := visitedCells(grid, up, guardStart)
 
 	loops := 0

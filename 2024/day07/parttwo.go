@@ -1,19 +1,21 @@
 package day07
 
 import (
+	"bufio"
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 7, useSample)
+	f := parse.OpenInput(2024, 7, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
 	sum := 0
-	for f.Scan() {
-		target, vals := parse(f.Text())
+	for scanner.Scan() {
+		target, vals := parseInp(scanner.Text())
 		if isPossibleWithConcat(target, vals) {
 			sum += target
 		}

@@ -1,14 +1,18 @@
 package day08
 
 import (
+	"bufio"
+
+	"github.com/k-nox/advent-of-code-solutions/parse"
 	"github.com/k-nox/aoc/util"
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 8, useSample)
+	f := parse.OpenInput(2024, 8, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
-	grid, antennas := parse(f)
+	grid, antennas := parseInp(scanner)
 	uniqueAntinodes := map[util.Point]bool{}
 
 	for _, locations := range antennas {

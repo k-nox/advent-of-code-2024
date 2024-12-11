@@ -1,9 +1,10 @@
 package day04
 
 import (
+	"bufio"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 type Point struct {
@@ -14,14 +15,16 @@ type Point struct {
 type Grid map[Point]string
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 4, useSample)
+	f := parse.OpenInput(2024, 4, useSample)
 	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
 
 	xLocs := []Point{}
 	grid := Grid{}
 	y := 0
-	for f.Scan() {
-		curr := strings.TrimSpace(f.Text())
+	for scanner.Scan() {
+		curr := strings.TrimSpace(scanner.Text())
 		for x := 0; x < len(curr); x++ {
 			p := Point{
 				X: x,

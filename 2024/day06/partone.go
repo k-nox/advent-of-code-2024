@@ -1,16 +1,19 @@
 package day06
 
 import (
+	"bufio"
 	"strings"
 
+	"github.com/k-nox/advent-of-code-solutions/parse"
 	"github.com/k-nox/aoc/util"
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 6, useSample)
+	f := parse.OpenInput(2024, 6, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
-	grid, guard := parse(f)
+	grid, guard := parseInp(scanner)
 
 	currDir := 0 // index for Up
 	sum := 1
@@ -43,12 +46,12 @@ func PartOne(useSample bool) int {
 	return sum
 }
 
-func parse(f *util.FileScanner) (util.Grid, util.Point) {
+func parseInp(scanner *bufio.Scanner) (util.Grid, util.Point) {
 	grid := util.Grid{}
 	y := 0
 	guard := util.Point{}
-	for f.Scan() {
-		curr := strings.TrimSpace(f.Text())
+	for scanner.Scan() {
+		curr := strings.TrimSpace(scanner.Text())
 		for x := 0; x < len(curr); x++ {
 			p := util.Point{
 				X: x,

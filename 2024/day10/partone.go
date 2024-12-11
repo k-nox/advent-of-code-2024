@@ -1,16 +1,20 @@
 package day10
 
 import (
+	"bufio"
+
+	"github.com/k-nox/advent-of-code-solutions/parse"
 	"github.com/k-nox/aoc/util"
 )
 
 type grid map[util.Point]int
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 10, useSample)
+	f := parse.OpenInput(2024, 10, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
-	g, trailheads := parse(f)
+	g, trailheads := parseInp(scanner)
 	sum := 0
 	for _, trailhead := range trailheads {
 		sum += score(g, trailhead, map[util.Point]bool{}, true)
@@ -19,13 +23,13 @@ func PartOne(useSample bool) int {
 }
 
 // returns a grid & a list of trailheads
-func parse(f *util.FileScanner) (grid, []util.Point) {
+func parseInp(scanner *bufio.Scanner) (grid, []util.Point) {
 	g := grid{}
 	trailheads := []util.Point{}
 
 	y := 0
-	for f.Scan() {
-		row := f.Text()
+	for scanner.Scan() {
+		row := scanner.Text()
 		for x, char := range row {
 			val := int(char - '0')
 			point := util.Point{

@@ -1,23 +1,25 @@
 package day05
 
 import (
+	"bufio"
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 5, useSample)
+	f := parse.OpenInput(2024, 5, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
 	// X|Y
 	rules := map[string][]string{} // key = X, val = Y; x must come before y
 	parsingRules := true
 	sep := "|"
 	sum := 0
-	for f.Scan() {
-		curr := strings.TrimSpace(f.Text())
+	for scanner.Scan() {
+		curr := strings.TrimSpace(scanner.Text())
 
 		if curr == "" {
 			parsingRules = false

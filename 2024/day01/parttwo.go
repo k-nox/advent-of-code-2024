@@ -1,21 +1,24 @@
 package day01
 
 import (
+	"bufio"
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 1, useSample)
+	f := parse.OpenInput(2024, 1, useSample)
 	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
 
 	var left []int
 	rightFreq := make(map[int]int)
 
-	for f.Scan() {
-		curr := f.Text()
+	for scanner.Scan() {
+		curr := scanner.Text()
 		nums := strings.Fields(curr)
 
 		leftNum, err := strconv.Atoi(nums[0])

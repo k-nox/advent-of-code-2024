@@ -1,20 +1,22 @@
 package day04
 
 import (
+	"bufio"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 4, useSample)
+	f := parse.OpenInput(2024, 4, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
 	grid := Grid{}
 	y := 0
 	aLocs := []Point{}
-	for f.Scan() {
-		curr := strings.TrimSpace(f.Text())
+	for scanner.Scan() {
+		curr := strings.TrimSpace(scanner.Text())
 		for x := 0; x < len(curr); x++ {
 			p := Point{
 				X: x,

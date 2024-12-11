@@ -1,17 +1,20 @@
 package day08
 
 import (
+	"bufio"
 	"strings"
 
+	"github.com/k-nox/advent-of-code-solutions/parse"
 	"github.com/k-nox/aoc/util"
 )
 
 func PartOne(useSample bool) int {
-	f := util.NewScannerForInput(2024, 8, useSample)
+	f := parse.OpenInput(2024, 8, useSample)
 	defer f.Close()
+	scanner := bufio.NewScanner(f)
 
 	antinodes := map[util.Point]bool{}
-	grid, antennas := parse(f)
+	grid, antennas := parseInp(scanner)
 	for _, locations := range antennas {
 		antinodesForLoc := findAntinodes(grid, locations)
 		for _, n := range antinodesForLoc {
@@ -24,13 +27,13 @@ func PartOne(useSample bool) int {
 	return len(antinodes)
 }
 
-func parse(f *util.FileScanner) (util.Grid, map[string][]util.Point) {
+func parseInp(scanner *bufio.Scanner) (util.Grid, map[string][]util.Point) {
 	g := util.Grid{}
 	antennas := map[string][]util.Point{}
 
 	y := 0
-	for f.Scan() {
-		line := strings.TrimSpace(f.Text())
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
 		for x := range line {
 			pt := util.Point{
 				X: x,

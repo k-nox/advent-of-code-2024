@@ -1,9 +1,6 @@
 package day09
 
-import (
-	"fmt"
-	"os"
-)
+import "github.com/k-nox/advent-of-code-solutions/parse"
 
 func PartOne(useSample bool) int {
 	file := "input"
@@ -11,19 +8,16 @@ func PartOne(useSample bool) int {
 		file = "sample"
 	}
 
-	f, err := os.ReadFile(fmt.Sprintf("input/2024/day09/%s.txt", file))
-	if err != nil {
-		panic(err)
-	}
+	f := parse.ReadFile(2024, 9, file)
 
 	inp := string(f)
-	disk := parse(inp)
+	disk := parseInp(inp)
 	moveBlocks(disk)
 
 	return checksum(disk)
 }
 
-func parse(inp string) []*int {
+func parseInp(inp string) []*int {
 	disk := []*int{}
 	isFile := true
 	id := 0

@@ -1,22 +1,25 @@
 package day02
 
 import (
+	"bufio"
 	"math"
 	"slices"
 	"strconv"
 	"strings"
 
-	"github.com/k-nox/aoc/util"
+	"github.com/k-nox/advent-of-code-solutions/parse"
 )
 
 func PartTwo(useSample bool) int {
-	f := util.NewScannerForInput(2024, 2, useSample)
+	f := parse.OpenInput(2024, 2, useSample)
 	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
 	safe := 0
 	// threshold := 20
 
-	for f.Scan() {
-		curr := f.Text()
+	for scanner.Scan() {
+		curr := scanner.Text()
 		rawReport := strings.Fields(curr)
 		report := make([]int, len(rawReport))
 		for i, s := range rawReport {

@@ -20,3 +20,13 @@ func (s Set[T]) Add(vals ...T) {
 		s[v] = struct{}{}
 	}
 }
+
+func (s Set[T]) Members() []T {
+	members := make([]T, len(s))
+	i := 0
+	for v := range s {
+		members[i] = v
+		i++
+	}
+	return members
+}

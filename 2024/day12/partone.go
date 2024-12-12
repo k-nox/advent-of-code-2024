@@ -71,7 +71,7 @@ func traverseRegion(garden grid, plot image.Point, visited helper.Set[image.Poin
 	plant := garden[plot]
 	reg.area++
 	visited.Add(plot)
-	for _, dir := range helper.CompassDirections {
+	for _, dir := range helper.CardinalDirections {
 		next := dir(plot)
 		if _, valid := garden[next]; !valid {
 			reg.perimeter++

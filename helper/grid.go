@@ -4,7 +4,7 @@ import (
 	"image"
 )
 
-var CompassDirections = []func(image.Point) image.Point{
+var CardinalDirections = []func(image.Point) image.Point{
 	Up,
 	Right,
 	Down,

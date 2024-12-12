@@ -1,6 +1,15 @@
 package helper
 
-import "image"
+import (
+	"image"
+)
+
+var CompassDirections = []func(image.Point) image.Point{
+	Up,
+	Right,
+	Down,
+	Left,
+}
 
 func Left(p image.Point) image.Point {
 	return p.Add(image.Pt(-1, 0))

@@ -4,7 +4,9 @@ import (
 	"image"
 )
 
-var CardinalDirections = []func(image.Point) image.Point{
+type Direction func(image.Point) image.Point
+
+var CardinalDirections = []Direction{
 	Up,
 	Right,
 	Down,

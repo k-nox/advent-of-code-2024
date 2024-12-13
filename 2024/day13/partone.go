@@ -25,7 +25,7 @@ func (m machine) String() string {
 func PartOne(useSample bool) int {
 	f := helper.OpenInput(2024, 13, useSample)
 	defer f.Close()
-	machines := parseInp(f)
+	machines := parseInp(f, false)
 	tokens := 0
 	for _, mach := range machines {
 		toWin, possible := mach.play()
@@ -37,7 +37,7 @@ func PartOne(useSample bool) int {
 	return tokens
 }
 
-func parseInp(f *os.File) []machine {
+func parseInp(f *os.File, addToPrize bool) []machine {
 	machines := []machine{}
 	buttonRegexp := regexp.MustCompile(`^Button (A|B): X\+(\d+), Y\+(\d+)$`)
 	prizeRegexp := regexp.MustCompile(`^Prize: X=(\d+), Y=(\d+)$`)
@@ -84,6 +84,10 @@ func parseInp(f *os.File) []machine {
 			if err != nil {
 				panic(err)
 			}
+			if addToPrize {
+				x += 10000000000000
+				y += 10000000000000
+			}
 			mach.prize = image.Pt(x, y)
 			machines = append(machines, mach)
 			mach = machine{}
@@ -94,12 +98,12 @@ func parseInp(f *os.File) []machine {
 
 // returns the # of tokens needed to win; bool is true if game can be won, false if not
 func (mach machine) play() (int, bool) {
-	ax := float32(mach.a.X)
-	ay := float32(mach.a.Y)
-	bx := float32(mach.b.X)
-	by := float32(mach.b.Y)
-	px := float32(mach.prize.X)
-	py := float32(mach.prize.Y)
+	ax := float64(mach.a.X)
+	ay := float64(mach.a.Y)
+	bx := float64(mach.b.X)
+	by := float64(mach.b.Y)
+	px := float64(mach.prize.X)
+	py := float64(mach.prize.Y)
 
 	bTokensFloat := (ay*px - ax*py) / (ay*bx - ax*by)
 	aTokensFloat := (px - bx*bTokensFloat) / ax

@@ -1,8 +1,6 @@
 package day13
 
 import (
-	"bufio"
-
 	"github.com/k-nox/advent-of-code-solutions/helper"
 )
 
@@ -10,11 +8,13 @@ func PartTwo(useSample bool) int {
 	f := helper.OpenInput(2024, 13, useSample)
 	defer f.Close()
 
-	scanner := bufio.NewScanner(f)
-
-	for scanner.Scan() {
-	
+	machines := parseInp(f, true)
+	tokens := 0
+	for _, mach := range machines {
+		toWin, possible := mach.play()
+		if possible {
+			tokens += toWin
+		}
 	}
-
-	return 0
+	return tokens
 }

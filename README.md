@@ -22,7 +22,7 @@ I created the [aoc](https://github.com/k-nox/aoc) tool to manage daily file gene
 | 10  | ✅            | ✅            |
 | 11  | ✅            | ✅            |
 | 12  | ✅            | ✅            |
-| 13  | ✅            |               |
+| 13  | ✅            | ✅            |
 | 14  |               |               |
 | 15  |               |               |
 | 16  |               |               |

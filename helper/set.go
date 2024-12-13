@@ -34,3 +34,9 @@ func (s Set[T]) Members() []T {
 func (s Set[T]) Len() int {
 	return len(s)
 }
+
+func (s Set[T]) Remove(vals ...T) {
+	for _, v := range vals {
+		delete(s, v)
+	}
+}

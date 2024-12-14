@@ -36,22 +36,7 @@ func PartOne(useSample bool) int {
 	}
 
 	bounds := image.Rect(0, 0, max.X, max.Y)
-	mid := max.Div(2)
-
-	quads := []quad{
-		{
-			bounds: image.Rect(0, 0, mid.X, mid.Y),
-		},
-		{
-			bounds: image.Rect(mid.X+1, 0, bounds.Max.X, mid.Y),
-		},
-		{
-			bounds: image.Rect(0, mid.Y+1, mid.X, bounds.Max.Y),
-		},
-		{
-			bounds: image.Rect(mid.X+1, mid.Y+1, bounds.Max.X, bounds.Max.Y),
-		},
-	}
+	quads := quads(bounds)
 
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
@@ -72,6 +57,25 @@ func PartOne(useSample bool) int {
 	}
 
 	return safetyFactor
+}
+
+func quads(bounds image.Rectangle) []quad {
+	mid := bounds.Max.Div(2)
+
+	return []quad{
+		{
+			bounds: image.Rect(0, 0, mid.X, mid.Y),
+		},
+		{
+			bounds: image.Rect(mid.X+1, 0, bounds.Max.X, mid.Y),
+		},
+		{
+			bounds: image.Rect(0, mid.Y+1, mid.X, bounds.Max.Y),
+		},
+		{
+			bounds: image.Rect(mid.X+1, mid.Y+1, bounds.Max.X, bounds.Max.Y),
+		},
+	}
 }
 
 func parseRobot(line string) *robot {

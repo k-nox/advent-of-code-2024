@@ -1,6 +1,6 @@
 // Code generated; DO NOT EDIT.
 // This file was generated at
-// 2024-12-13 07:18:27.536806 -0800 PST m=+0.702605667
+// 2024-12-14 07:34:45.545523 -0800 PST m=+0.576553542
 package main
 
 import (
@@ -20,6 +20,7 @@ import (
 	"github.com/k-nox/advent-of-code-solutions/2024/day11"
 	"github.com/k-nox/advent-of-code-solutions/2024/day12"
 	"github.com/k-nox/advent-of-code-solutions/2024/day13"
+	"github.com/k-nox/advent-of-code-solutions/2024/day14"
 )
 
 var registry = cli.Registry{
@@ -36,6 +37,7 @@ var registry = cli.Registry{
 	"day11": {PartOne: day11.PartOne, PartTwo: day11.PartTwo},
 	"day12": {PartOne: day12.PartOne, PartTwo: day12.PartTwo},
 	"day13": {PartOne: day13.PartOne, PartTwo: day13.PartTwo},
+	"day14": {PartOne: day14.PartOne, PartTwo: day14.PartTwo},
 }	
 
 func main() {
